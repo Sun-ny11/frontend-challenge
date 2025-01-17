@@ -1,13 +1,14 @@
 import { ComponentPropsWithoutRef } from "react";
-import s from "./Cat.module.css";
+import s from "./Card.module.css";
+import clsx from "clsx";
 
-export const Cat = ({
+export const Card = ({
   className,
   ...rest
 }: ComponentPropsWithoutRef<"img">) => {
   return (
     <div className={s.main}>
-      <img {...rest} className={s.img + " " + className} />
+      <img {...rest} className={clsx(s.img, className)} />
     </div>
   );
 };

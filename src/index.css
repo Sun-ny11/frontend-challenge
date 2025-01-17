@@ -1,6 +1,10 @@
+:root {
+    --header-height: 64px;
+    --card-gap: 48px
+}
+
 html {
     box-sizing: border-box;
-    font-size: 100%;
 }
   
 * {
@@ -14,4 +18,25 @@ html {
 *::after {
     box-sizing: border-box;
 }
+body {
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif; 
+    font-weight: 400; 
+    font-size: 14px; 
+    line-height: 21px; 
+    letter-spacing: 0.25px; 
+    text-align: center;
+}
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none; 
+    color: inherit;
+}
   
+.container {
+    max-width: 1320px;
+    margin: 0 auto;
+}
