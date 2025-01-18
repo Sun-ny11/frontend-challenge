@@ -1,4 +1,7 @@
-.main {
+.main {     
+    position: fixed;
+    top: 0;
+    right: 0;
     width: 100%;
     height: var(--header-height);
     background-color: rgba(33, 150, 243, 1);
@@ -15,9 +18,17 @@
 .navBtn {
     display: flex;
     height: 100%;
-
+    transition: var(--all-transition);
     align-items: center;
     padding:0 23px;
     color: rgba(255, 255, 255, 1);
-    background-color: green;
+}
+
+.navBtn:hover{
+    background-color: rgba(30, 136, 229, 1);    
+}
+
+.navBtn:focus-visible{
+    outline: none;
+    background-color: rgba(30, 136, 229, 1);    
 }

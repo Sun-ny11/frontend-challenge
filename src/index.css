@@ -1,6 +1,9 @@
 :root {
     --header-height: 64px;
-    --card-gap: 48px
+    --card-gap: 48px;
+    --all-transition: all 0.3s ease-in-out;
+    --heart-color: rgba(255, 58, 0, 1);
+
 }
 
 html {
@@ -19,7 +22,6 @@ html {
     box-sizing: border-box;
 }
 body {
-    overflow: hidden;
     font-family: 'Roboto', sans-serif; 
     font-weight: 400; 
     font-size: 14px; 
@@ -35,7 +37,7 @@ a {
     text-decoration: none; 
     color: inherit;
 }
-  
+
 .container {
     max-width: 1320px;
     margin: 0 auto;
