@@ -1,6 +1,8 @@
 import { ComponentPropsWithoutRef } from "react";
 import s from "./Header.module.css";
 import clsx from "clsx";
+import { NavLink } from "react-router";
+import { Path } from "../../enums/enums";
 
 export const Header = ({
   className,
@@ -11,14 +13,25 @@ export const Header = ({
       <nav className={clsx("container", s.nav)}>
         <ul className={s.navList}>
           <li>
-            <a className={s.navBtn} href="#">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${s.navBtn} ${s.active}` : s.navBtn
+              }
+              to={Path.Home}
+              end
+            >
               Все котики
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a className={s.navBtn} href="#">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${s.navBtn} ${s.active}` : s.navBtn
+              }
+              to={Path.Favorite}
+            >
               Любимые котики
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>

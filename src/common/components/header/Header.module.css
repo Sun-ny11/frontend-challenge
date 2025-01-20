@@ -2,6 +2,7 @@
     position: fixed;
     top: 0;
     right: 0;
+    z-index: 1111;
     width: 100%;
     height: var(--header-height);
     background-color: rgba(33, 150, 243, 1);
@@ -31,4 +32,9 @@
 .navBtn:focus-visible{
     outline: none;
     background-color: rgba(30, 136, 229, 1);    
+}
+
+a.active {
+    background-color: rgba(30, 136, 229, 1);    
+
 }
