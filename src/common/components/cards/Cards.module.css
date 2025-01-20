@@ -1,0 +1,12 @@
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--card-gap);
+    margin-top: var(--card-gap);
+  
+}
+
+.element {
+    height: 1px;
+    width: 100%;
+}
