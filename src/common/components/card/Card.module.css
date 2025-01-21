@@ -75,3 +75,39 @@
   color: var(--heart-color);
 
 }
+
+@media (max-width: 880px) {
+  .main {
+    width: 256px;
+    height: 256px;
+      
+  }
+  .main::after {
+    height: 85px;
+  }
+  .main::before {
+    width: 290px;
+    height: 290px
+  }
+  .likeBtn{
+      opacity: 1;
+      color: var(--heart-color);
+  
+    }
+}
+
+
+@media (max-width: 700px) {
+  .main {
+    width: 290px;
+    height: 290px;
+      
+  }
+  .main::after {
+    height: 90px;
+  }
+  .main::before {
+    width: 316px;
+    height: 316px;
+  }
+}

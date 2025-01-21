@@ -3,6 +3,7 @@
     --card-gap: 48px;
     --all-transition: all 0.3s ease-in-out;
     --heart-color: rgba(255, 58, 0, 1);
+    
 
 }
 
@@ -41,4 +42,29 @@ a {
 .container {
     max-width: 1320px;
     margin: 0 auto;
+}
+
+@media (max-width: 1380px) {
+    .container {
+        max-width: 1120px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .container {
+        max-width: 860px;      
+    }
+}
+
+@media (max-width: 880px) {
+    .container {
+        max-width: 600px;
+    }
+}
+
+
+@media (max-width: 700px) {
+    .container {
+        max-width: 550px;       
+    }
 }
