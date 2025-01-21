@@ -6,11 +6,9 @@ export const FavoriteCards = () => {
   const favoriteCats = favoriteStore((state) => state.favoriteCats)
   const toggleLikeCats = useCats((state) => state.toggleLikeCats)
   return (
-    <>
-      <Cards
-        cats={favoriteCats}
-        handleLikeClick={toggleLikeCats}
-      />
-    </>
+    <Cards
+      cats={favoriteCats}
+      handleLikeClick={toggleLikeCats}
+    />
   )
 }
