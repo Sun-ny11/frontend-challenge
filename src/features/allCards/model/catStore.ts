@@ -22,16 +22,18 @@ export const useCats = create<CatStore>((set,get) => ({
     fetchCats: async (signal?:AbortSignal) => {
       set({ loading:true })
 
-      if(!getFromLocalStorage(User.userId)){
+      const userId = getFromLocalStorage(User.userId)
+
+      if(!userId){
         setToLocalStorage(User.userId, uuidv4())
       }
 
       try{
+        const {pageCount, cats} = get()
 
-        const userId = getFromLocalStorage(User.userId)
-        const newCats = await catApi.fetchCat(get().pageCount, userId, signal  )
+        const newCats = await catApi.fetchCat({page:pageCount, userId, signal})
 
-        set({pageCount: get().pageCount + 1, cats:[...get().cats, ...newCats]})
+        set({pageCount: pageCount + 1, cats:[...cats, ...newCats]})
 
       }catch (error) {
         responseErrorHandler(error)
@@ -40,8 +42,10 @@ export const useCats = create<CatStore>((set,get) => ({
       }
     },
     toggleLikeCats: async (catId:string) => {
-      const likedCatIndex = get().cats?.findIndex((cat) => cat.id === catId);
-      const favouriteCat = get().cats[likedCatIndex]
+      const { cats} = get()
+
+      const likedCatIndex = cats.findIndex((cat) => cat.id === catId);
+      const favouriteCat = cats[likedCatIndex]
 
       const userId = getFromLocalStorage(User.userId)
 
@@ -51,7 +55,7 @@ export const useCats = create<CatStore>((set,get) => ({
           const like = await catApi.likeCat(catId, userId)
         
           set({
-            cats: get().cats.map((cat) =>
+            cats: cats.map((cat) =>
               cat.id === catId
                 ? { ...cat, favourite: { id: like.id} }
                 : cat
@@ -64,7 +68,7 @@ export const useCats = create<CatStore>((set,get) => ({
 
           await catApi.dislikeCat(favouriteCat.favourite.id)
 
-          const cats = get().cats.map((cat) =>{
+          const deleteCats = cats.map((cat) =>{
               if(cat.id === catId){
                 const copy = {...cat}
                 delete copy.favourite
@@ -73,7 +77,7 @@ export const useCats = create<CatStore>((set,get) => ({
               return cat
             })
 
-          set({cats})
+          set({cats:deleteCats})
           favoriteStore.getState().deleteFavoriteCat(catId)
 
         }
