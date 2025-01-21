@@ -31,7 +31,7 @@ export const useCats = create<CatStore>((set,get) => ({
       try{
         const {pageCount, cats} = get()
 
-        const newCats = await catApi.fetchCat(pageCount, userId, signal  )
+        const newCats = await catApi.fetchCat({page:pageCount, userId, signal})
 
         set({pageCount: pageCount + 1, cats:[...cats, ...newCats]})
 
