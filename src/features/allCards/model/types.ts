@@ -2,46 +2,53 @@ type Category = {
     id: number;
     name: string;
   };
-  type CatBreed = {
-    weight: {
-      imperial: string;
-      metric: string;
-    };
-    id: string;
-    name: string;
-    vetstreet_url: string;
-    temperament: string;
-    origin: string;
-    country_codes: string;
-    country_code: string;
-    description: string;
-    life_span: string;
-    indoor: number;
-    lap: number;
-    alt_names: string;
-    adaptability: number;
-    affection_level: number;
-    child_friendly: number;
-    dog_friendly: number;
-    energy_level: number;
-    grooming: number;
-    health_issues: number;
-    intelligence: number;
-    shedding_level: number;
-    social_needs: number;
-    stranger_friendly: number;
-    vocalisation: number;
-    experimental: number;
-    hairless: number;
-    natural: number;
-    rare: number;
-    rex: number;
-    suppressed_tail: number;
-    short_legs: number;
-    wikipedia_url: string;
-    hypoallergenic: number;
-    reference_image_id: string;
-}
+  type CatBreedNumberTypes =
+  | 'adaptability'
+  | 'affection_level'
+  | 'child_friendly'
+  | 'dog_friendly'
+  | 'energy_level'
+  | 'grooming'
+  | 'health_issues'
+  | 'intelligence'
+  | 'shedding_level'
+  | 'social_needs'
+  | 'stranger_friendly'
+  | 'vocalisation'
+  | 'indoor'
+  | 'lap'
+  | 'experimental'
+  | 'hairless'
+  | 'natural'
+  | 'rare'
+  | 'rex'
+  | 'suppressed_tail'
+  | 'short_legs'
+  | 'hypoallergenic';
+
+type CatBreedBase = {
+  id: string;
+  name: string;
+  weight: {
+    imperial: string;
+    metric: string;
+  };
+  vetstreet_url: string;
+  temperament: string;
+  origin: string;
+  country_codes: string;
+  country_code: string;
+  description: string;
+  life_span: string;
+  alt_names: string;
+  wikipedia_url: string;
+  reference_image_id: string;
+};
+
+type CatBreed = CatBreedBase & {
+  [key in CatBreedNumberTypes]: number;
+};
+
 type Favourite = {
   id:number;
   
