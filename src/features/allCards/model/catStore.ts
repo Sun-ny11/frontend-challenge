@@ -62,7 +62,9 @@ export const useCats = create<CatStore>((set,get) => ({
             ),
           })
 
-          favoriteStore.getState().setFavoriteCats(get().cats[likedCatIndex])
+          const updatedCat = get().cats[likedCatIndex]
+
+          favoriteStore.getState().setFavoriteCats(updatedCat)
 
         }else{
 

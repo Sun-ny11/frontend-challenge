@@ -17,19 +17,17 @@ export const Cards = forwardRef<ElementRef<"div">, Props>(
       }
     };
     return (
-      <>
-        <div className={clsx("container", s.content)}>
-          {cats.map((el) => (
-            <Card
-              isLiked={!!el.favourite}
-              callBack={() => onClickHandler(el.id)}
-              key={el.id}
-              src={el.url}
-            />
-          ))}
-          <div ref={ref} className={s.element} />
-        </div>
-      </>
+      <div className={clsx("container", s.content)}>
+        {cats.map((el) => (
+          <Card
+            isLiked={!!el.favourite}
+            callBack={() => onClickHandler(el.id)}
+            key={el.id}
+            src={el.url}
+          />
+        ))}
+        <div ref={ref} className={s.element} />
+      </div>
     );
   }
 );
