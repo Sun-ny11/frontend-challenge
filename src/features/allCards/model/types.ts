@@ -1,8 +1,8 @@
 type Category = {
-    id: number;
-    name: string;
-  };
-  type CatBreedNumberTypes =
+  id: number
+  name: string
+}
+type CatBreedNumberTypes =
   | 'adaptability'
   | 'affection_level'
   | 'child_friendly'
@@ -24,41 +24,40 @@ type Category = {
   | 'rex'
   | 'suppressed_tail'
   | 'short_legs'
-  | 'hypoallergenic';
+  | 'hypoallergenic'
 
 type CatBreedBase = {
-  id: string;
-  name: string;
+  id: string
+  name: string
   weight: {
-    imperial: string;
-    metric: string;
-  };
-  vetstreet_url: string;
-  temperament: string;
-  origin: string;
-  country_codes: string;
-  country_code: string;
-  description: string;
-  life_span: string;
-  alt_names: string;
-  wikipedia_url: string;
-  reference_image_id: string;
-};
+    imperial: string
+    metric: string
+  }
+  vetstreet_url: string
+  temperament: string
+  origin: string
+  country_codes: string
+  country_code: string
+  description: string
+  life_span: string
+  alt_names: string
+  wikipedia_url: string
+  reference_image_id: string
+}
 
 type CatBreed = CatBreedBase & {
-  [key in CatBreedNumberTypes]: number;
-};
+  [key in CatBreedNumberTypes]: number
+}
 
 type Favourite = {
-  id:number;
-  
+  id: number
 }
 export type CatImage = {
-    breeds: CatBreed[] | []; 
-    categories?: Category[]; 
-    id: string; 
-    url: string;
-    favourite?: Favourite
-    width: number;
-    height: number;
-  };
+  breeds: CatBreed[] | []
+  categories?: Category[]
+  id: string
+  url: string
+  favourite?: Favourite
+  width: number
+  height: number
+}

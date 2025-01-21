@@ -17,12 +17,11 @@ type IntersectionObserverInit = {
 
 const defaultOptions = {
   threshold: 0.1,
-  
 }
 
 export const useElementOnScreen = <T extends HTMLElement>(
   options: IntersectionObserverInit = defaultOptions
-): ReturnType<T>  => {
+): ReturnType<T> => {
   const ref = useRef<T>(null)
   const [visible, setVisible] = useState(false)
 
@@ -35,18 +34,17 @@ export const useElementOnScreen = <T extends HTMLElement>(
 
     const observer = new IntersectionObserver(callback, options)
     const currentRef = ref.current
-    
-    if(currentRef){
-     observer.observe(currentRef)
+
+    if (currentRef) {
+      observer.observe(currentRef)
     }
 
     return () => {
-        if(currentRef){
-            observer.unobserve(currentRef)
-        }
+      if (currentRef) {
+        observer.unobserve(currentRef)
+      }
     }
   }, [ref, options])
-
 
   return {
     ref,
