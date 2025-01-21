@@ -25,10 +25,17 @@ export const AllCards = () => {
         setTriggerLoading((prev) => !prev);
       }
     };
+    const controller = new AbortController();
+
+    const signal = controller.signal;
 
     if (visible) {
-      fetchCats().then(() => triggerRerender());
+      fetchCats(signal).then(() => triggerRerender());
     }
+
+    return () => {
+      controller.abort();
+    };
   }, [visible, fetchCats, triggerLoading, ref]);
 
   return (

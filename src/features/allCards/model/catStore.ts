@@ -12,14 +12,14 @@ type CatStore = {
     cats:CatImage[] | []
     loading:boolean
     pageCount:number
-    fetchCats:()=>Promise<void>
+    fetchCats:(signal?:AbortSignal)=>Promise<void>
     toggleLikeCats:(catId:string)=>Promise<void>
 }
 export const useCats = create<CatStore>((set,get) => ({
     cats:  [],
     loading:false,
     pageCount:0,
-    fetchCats: async () => {
+    fetchCats: async (signal?:AbortSignal) => {
       set({ loading:true })
 
       if(!getFromLocalStorage(User.userId)){
@@ -29,7 +29,7 @@ export const useCats = create<CatStore>((set,get) => ({
       try{
 
         const userId = getFromLocalStorage(User.userId)
-        const newCats = await catApi.fetchCat(get().pageCount, userId  )
+        const newCats = await catApi.fetchCat(get().pageCount, userId, signal  )
 
         set({pageCount: get().pageCount + 1, cats:[...get().cats, ...newCats]})
 

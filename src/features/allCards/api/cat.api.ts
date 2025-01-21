@@ -8,14 +8,15 @@ import { Nullable } from "../../../common/types"
 class CatApi {
     constructor(private instance: AxiosInstance) {}
 
-    public async fetchCat(page:number = 0, userId?:Nullable<string>, limit:number = 15, order:string = "DESC"): Promise<CatImage[]> {
+    public async fetchCat(page:number = 0, userId?:Nullable<string>,signal?:AbortSignal, limit:number = 15, order:string = "DESC"): Promise<CatImage[]> {
       const res:AxiosResponse<CatImage[]> = await this.instance.get(Endpoints.fetchCats,{
         params: {
           page,
           limit,
           order,
           sub_id: userId
-        }
+        }, 
+        signal
       })
 
       return res.data
