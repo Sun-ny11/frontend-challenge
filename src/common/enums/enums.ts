@@ -1,6 +1,6 @@
 export enum Path {
-    Home = '/',
-    Favorite = '/favorite-cats'
+    Home = '/frontend-challenge/',
+    Favorite = '/frontend-challenge/favorite-cats'
 }
 
 export enum Base {
