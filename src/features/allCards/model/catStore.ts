@@ -3,6 +3,9 @@ import { catApi } from '../api/cat.api'
 import { CatImage } from './types'
 import { responseErrorHandler } from '../../../common/utils/responseErrorHandler'
 import { favoriteStore } from '../../favoriteCards/model/favoritesStore'
+import { v4 as uuidv4 } from 'uuid';
+import { getFromLocalStorage, setToLocalStorage } from '../../../common/utils/localStorage'
+import { User } from '../../../common/enums/enums'
 
 
 type CatStore = {
@@ -19,11 +22,16 @@ export const useCats = create<CatStore>((set,get) => ({
     fetchCats: async () => {
       set({ loading:true })
 
-      try{
-        const cats = await catApi.fetchCat(get().pageCount)
+      if(!getFromLocalStorage(User.userId)){
+        setToLocalStorage(User.userId, uuidv4())
+      }
 
-        set({pageCount: get().pageCount + 1})
-        set({ cats:[...get().cats, ...cats] })
+      try{
+
+        const userId = getFromLocalStorage(User.userId)
+        const newCats = await catApi.fetchCat(get().pageCount, userId  )
+
+        set({pageCount: get().pageCount + 1, cats:[...get().cats, ...newCats]})
 
       }catch (error) {
         responseErrorHandler(error)
@@ -34,10 +42,13 @@ export const useCats = create<CatStore>((set,get) => ({
     toggleLikeCats: async (catId:string) => {
       const likedCatIndex = get().cats?.findIndex((cat) => cat.id === catId);
       const favouriteCat = get().cats[likedCatIndex]
+
+      const userId = getFromLocalStorage(User.userId)
+
       try{
         if(!favouriteCat.favourite){
           
-          const like = await catApi.likeCat(catId)
+          const like = await catApi.likeCat(catId, userId)
         
           set({
             cats: get().cats.map((cat) =>
