@@ -1,40 +1,39 @@
-.main {     
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 1111;
-    width: 100%;
-    height: var(--header-height);
-    background-color: rgba(33, 150, 243, 1);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.24);
+.main {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1111;
+  width: 100%;
+  height: var(--header-height);
+  background-color: rgba(33, 150, 243, 1);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.24);
 }
-.nav{
-    height: inherit;
+.nav {
+  height: inherit;
 }
 .navList {
-    height: inherit;
-    display: flex;
+  height: inherit;
+  display: flex;
 }
 
 .navBtn {
-    display: flex;
-    height: 100%;
-    transition: var(--all-transition);
-    align-items: center;
-    padding:0 23px;
-    color: rgba(255, 255, 255, 1);
+  display: flex;
+  height: 100%;
+  transition: var(--all-transition);
+  align-items: center;
+  padding: 0 23px;
+  color: rgba(255, 255, 255, 1);
 }
 
-.navBtn:hover{
-    background-color: rgba(30, 136, 229, 1);    
+.navBtn:hover {
+  background-color: rgba(30, 136, 229, 1);
 }
 
-.navBtn:focus-visible{
-    outline: none;
-    background-color: rgba(30, 136, 229, 1);    
+.navBtn:focus-visible {
+  outline: none;
+  background-color: rgba(30, 136, 229, 1);
 }
 
 a.active {
-    background-color: rgba(30, 136, 229, 1);    
-
+  background-color: rgba(30, 136, 229, 1);
 }

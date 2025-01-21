@@ -1,107 +1,100 @@
 .main {
-    width: 225px;
-    height: 225px;
-    position: relative;
-  }
-  
-  .main::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) ;
-    z-index: -1;
-    width: 256px;
-    height: 256px;
-    box-shadow:
-        0px 9px 18px rgba(0, 0, 0, 0.18),
-        0px 6px 5px rgba(0, 0, 0, 0.24);    
-    transition: var(--all-transition);
+  width: 225px;
+  height: 225px;
+  position: relative;
+}
 
-    opacity: 0;
-  }
-  
+.main::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 256px;
+  height: 256px;
+  box-shadow:
+    0px 9px 18px rgba(0, 0, 0, 0.18),
+    0px 6px 5px rgba(0, 0, 0, 0.24);
+  transition: var(--all-transition);
+
+  opacity: 0;
+}
+
 .main:hover::before,
 .main:focus-within::before {
-    opacity: 1;
-  
-  }
-  .main::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 79px;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0), 
-        rgba(255, 255, 255, 0.5), 
-        rgba(255, 255, 255, 1), 
-        rgba(255, 255, 255, 1)
-      );
-    transition: var(--all-transition);
-  
-    opacity: 0;
-  }
-  .main:hover::after,
-  .main:focus-within::after{
   opacity: 1;
-  
-  }
-  .img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+}
+.main::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 79px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 1)
+  );
+  transition: var(--all-transition);
 
-  .likeBtn{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 11;
-    transition: var(--all-transition);
+  opacity: 0;
+}
+.main:hover::after,
+.main:focus-within::after {
+  opacity: 1;
+}
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    opacity: 0;
-  }
+.likeBtn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 11;
+  transition: var(--all-transition);
+
+  opacity: 0;
+}
 .main:hover .likeBtn,
 .likeBtn:focus-visible {
-  opacity: 1  ;
+  opacity: 1;
   outline: none;
   color: var(--heart-color);
 }
 .liked {
   opacity: 1;
   color: var(--heart-color);
-
 }
 
 @media (max-width: 880px) {
   .main {
     width: 256px;
     height: 256px;
-      
   }
   .main::after {
     height: 85px;
   }
   .main::before {
     width: 290px;
-    height: 290px
+    height: 290px;
   }
-  .likeBtn{
-      opacity: 1;
-      color: var(--heart-color);
-  
-    }
+  .likeBtn {
+    opacity: 1;
+    color: var(--heart-color);
+  }
 }
-
 
 @media (max-width: 700px) {
   .main {
     width: 290px;
     height: 290px;
-      
   }
   .main::after {
     height: 90px;
